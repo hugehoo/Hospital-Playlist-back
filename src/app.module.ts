@@ -3,7 +3,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { HospitalModule } from "./hospital/hospital.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Contact } from "./hospital/Contact.entity";
+import { HospitalEntity } from "./hospital/Hospital.entity";
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import { Contact } from "./hospital/Contact.entity";
           "rejectUnauthorized": false
         }
       },
-      "entities": [Contact],
+      "entities": [HospitalEntity],
     }),
   ],
   controllers: [AppController],

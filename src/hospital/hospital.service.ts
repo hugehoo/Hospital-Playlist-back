@@ -1,17 +1,17 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Contact } from "./Contact.entity";
 import { Repository } from "typeorm";
+import { HospitalEntity } from "./Hospital.entity";
 
 @Injectable()
 export class HospitalService {
   constructor(
-    @InjectRepository(Contact)
-    private contactRepository: Repository<Contact>
+    @InjectRepository(HospitalEntity)
+    private hospitalRepository: Repository<HospitalEntity>
   ) {
   }
 
   getResult() {
-    return this.contactRepository.findOne(1);
+    return this.hospitalRepository.findOne(1);
   }
 }
