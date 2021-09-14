@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { HospitalModule } from './hospital/hospital.module';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { HospitalModule } from "./hospital/hospital.module";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { Contact } from "./hospital/Contact.entity";
 
 @Module({
   imports: [
@@ -19,10 +20,11 @@ import { TypeOrmModule } from "@nestjs/typeorm";
           "rejectUnauthorized": false
         }
       },
-      "entities": [],
+      "entities": [Contact],
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
-export class AppModule {}
+export class AppModule {
+}

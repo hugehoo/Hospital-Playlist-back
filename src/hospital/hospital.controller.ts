@@ -11,5 +11,4 @@ export class HospitalController {
   getResult() {
     return this.hospitalService.getResult()
   }
-
 }
