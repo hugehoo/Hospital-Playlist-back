@@ -1,14 +1,15 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Query } from "@nestjs/common";
 import { AppService } from "../app.service";
 import { HospitalService } from "./hospital.service";
+import { chooseSingleType } from "../utils";
 
 @Controller('hospital')
 export class HospitalController {
 
   constructor(private readonly hospitalService: HospitalService) {}
 
-  @Get('result')
-  getResult() {
-    return this.hospitalService.getResult()
+  @Get('/result')
+  getResult(@Query() resultArray) {
+    return this.hospitalService.getResult(resultArray);
   }
 }
