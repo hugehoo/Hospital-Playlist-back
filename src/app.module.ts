@@ -21,6 +21,7 @@ import { HospitalEntity } from "./hospital/Hospital.entity";
         }
       },
       "entities": [HospitalEntity],
+      "synchronize": false
     }),
   ],
   controllers: [AppController],

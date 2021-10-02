@@ -15,5 +15,8 @@ export class HospitalEntity {
   image: string;
 
   @Column()
+  famous_line: string;
+
+  @Column()
   mbti: string;
 }

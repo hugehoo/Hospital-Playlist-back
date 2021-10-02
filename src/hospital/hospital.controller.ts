@@ -10,6 +10,7 @@ export class HospitalController {
 
   @Get('/result')
   getResult(@Query() resultArray) {
+    // console.log(resultArray);
     return this.hospitalService.getResult(resultArray);
   }
 }
