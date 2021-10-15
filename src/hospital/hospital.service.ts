@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { HospitalEntity } from "./Hospital.entity";
-import { chooseSingleType, switchType } from "../utils";
 
 @Injectable()
 export class HospitalService {
@@ -12,16 +11,11 @@ export class HospitalService {
   ) {
   }
 
-  async getResult(resultArray) {
-    const finalMBTI: string = chooseSingleType(resultArray);
-    console.log('finalMBTI: ', finalMBTI);
-
-    const resultId: number = switchType(finalMBTI);
-    console.log('resultId: ', resultId);
+  async getResult(resultId) {
     try {
       return {
         "resultCode": 200,
-        "resultData": await this.hospitalRepository.findOne(resultId),
+        "resultData": await this.hospitalRepository.findOne(resultId.id),
         "resultMsg": "success"
       };
     } catch (e) {
