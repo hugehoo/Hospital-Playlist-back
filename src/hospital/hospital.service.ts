@@ -15,7 +15,7 @@ export class HospitalService {
     try {
       return {
         "resultCode": 200,
-        "resultData": await this.hospitalRepository.findOne(resultId.id),
+        "resultData": await this.hospitalRepository.findOne(resultId),
         "resultMsg": "success"
       };
     } catch (e) {
