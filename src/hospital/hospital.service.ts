@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { HospitalEntity } from "./Hospital.entity";
@@ -12,14 +12,16 @@ export class HospitalService {
   }
 
   async getResult(resultId) {
-    try {
-      return {
-        "resultCode": 200,
-        "resultData": await this.hospitalRepository.findOne(resultId),
-        "resultMsg": "success"
-      };
-    } catch (e) {
-      return e;
+
+    const resultData = await this.hospitalRepository.findOne(resultId);
+
+    if (!resultData) {
+      throw new NotFoundException("not found");
     }
+    return {
+      "resultCode": 200,
+      "resultData": resultData,
+      "resultMsg": "success"
+    };
   }
 }
