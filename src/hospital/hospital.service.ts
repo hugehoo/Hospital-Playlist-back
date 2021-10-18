@@ -15,13 +15,14 @@ export class HospitalService {
 
     const resultData = await this.hospitalRepository.findOne(resultId);
 
-    if (!resultData) {
+    if (resultData) {
+      return {
+        "resultCode": 200,
+        "resultData": resultData,
+        "resultMsg": "success"
+      };
+    } else {
       throw new NotFoundException("not found");
     }
-    return {
-      "resultCode": 200,
-      "resultData": resultData,
-      "resultMsg": "success"
-    };
   }
 }
